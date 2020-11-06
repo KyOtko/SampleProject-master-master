@@ -8,14 +8,14 @@ namespace SampleProject
 {
     public partial class App : Application
     {
-        public static readonly MobileServiceClient MobileService = new MobileServiceClient("https://imarketresource.azurewebsites.net");
+        public static readonly MobileServiceClient MobileService = new MobileServiceClient("https://lookupdbwebapp.azurewebsites.net");
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new Activity.StackLayout());
+            MainPage = new NavigationPage(new Activity.LoginPage());
         }
-
-        protected override void OnStart()
+ 
+        protected override void OnStart()   
         {
         }
 

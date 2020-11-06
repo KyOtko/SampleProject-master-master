@@ -10,8 +10,7 @@
         </StackLayout>
         <StackLayout
              HeightRequest="300">
-            <Image  HeightRequest="300" 
-                   Source="http://lorempixel.com/1920/1080/nature/3/"
+            <Image Source="http://lorempixel.com/1920/1080/nature/3/"
                    Aspect="AspectFill"/>
         </StackLayout>
         <StackLayout HeightRequest="20"

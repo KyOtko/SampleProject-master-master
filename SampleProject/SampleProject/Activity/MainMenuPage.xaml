@@ -3,10 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SampleProject.Activity.MainMenuPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Main Menu Page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <SearchBar Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Placeholder="Look" BackgroundColor="Transparent" HorizontalOptions="Fill"/>
+            <Label Grid.Column="0" Grid.Row="3" Text="Categories" FontSize="15"/>
+
+            <CollectionView    Margin="0,5" 
+                               BackgroundColor="Gray"
+                               HeightRequest="100"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalScrollBarVisibility="Default" 
+                               ItemsLayout="HorizontalList" 
+                               Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="0,0,5,0"
+                                     BackgroundColor="yellow">
+                            <Frame HeightRequest="30" HasShadow="False" BackgroundColor="#feeee8" CornerRadius="10">
+                                <Image Source="http://lorempixel.com/1920/1080/nature/3/"/>
+                            </Frame>
+                            <Label Text="Burger" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

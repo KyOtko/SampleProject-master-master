@@ -20,7 +20,7 @@ namespace SampleProject.Activity
 
         private async void Button_OnClicked(object sender, EventArgs e)
         {
-            var users = (await App.MobileService.GetTable<TBL_Users>().Where(email => email.emailadd == emailEntry.Text).ToListAsync()).FirstOrDefault();
+            var users = (await App.MobileService.GetTable<tbl_Users>().Where(email => email.email == emailEntry.Text).ToListAsync()).FirstOrDefault();
             if (users != null)
             {
                 if (users.password == passwordEntry.Text)
