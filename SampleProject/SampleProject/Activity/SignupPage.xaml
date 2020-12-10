@@ -2,21 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SampleProject.Activity.SignupPage">
-    <StackLayout BackgroundColor="Gray">
-        <Frame Margin="20,60" HeightRequest="600" CornerRadius="10"
+    <StackLayout BackgroundColor="Aquamarine">
+        <Frame Margin="20,60" HeightRequest="480" CornerRadius="10"
                HasShadow="True">
             <StackLayout >
-                <Label Text="Sign-up" FontSize="15" FontAttributes="Bold"
+                <Label Text="Sign-up" FontSize="25" FontAttributes="Bold"
                        HorizontalOptions="Center"/>
                 <Entry x:Name="entry_fname" Placeholder="First name"/>
                 <Entry x:Name="entry_lname"  Placeholder="Last name"/>
                 <Editor x:Name="Address" Placeholder="Address"/>
-                <Entry x:Name="contact_Num" Placeholder="mobile #"/>
-                <Entry x:Name="entry_email" Placeholder="email address" Keyboard="Email"/>
-                <Entry x:Name="dob" Placeholder="Date of Birth"/>
-                <Entry x:Name="entry_gender" Placeholder="Gender"/>
-                <Entry x:Name="entry_pword" Placeholder="password" IsPassword="True"/>
-                <Entry x:Name="entry_cpword" Placeholder="confirm password" IsPassword="True"/>
+                <Entry x:Name="contact_Num" Placeholder="Mobile #"/>
+                <Entry x:Name="entry_email" Placeholder="Email Address" Keyboard="Email"/>
+                <Entry x:Name="entry_pword" Placeholder="Password" IsPassword="True"/>
+                <Entry x:Name="entry_cpword" Placeholder="Confirm Password" IsPassword="True"/>
                 <Button Text="Submit" CornerRadius="20" BackgroundColor="DodgerBlue"
                         TextColor="White" Clicked="Button_Clicked"/>
             </StackLayout>

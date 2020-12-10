@@ -12,7 +12,7 @@ namespace SampleProject
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new Activity.LoginPage());
+            MainPage = new NavigationPage(new Activity.MainMenuPage());
         }
  
         protected override void OnStart()   

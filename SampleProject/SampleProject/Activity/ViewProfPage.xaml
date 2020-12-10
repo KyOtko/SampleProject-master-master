@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleProject.Activity.ViewProfPage"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
+    <ScrollView>
+        <StackLayout BackgroundColor="#fbfaff">
+
+            <Grid RowSpacing="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="250"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0"
+                       Source="http://lorempixel.com/1920/1080/nature/3/" BackgroundColor="Pink" HeightRequest="300"
+                       VerticalOptions="Start" Aspect="AspectFill" Margin="0,-45,0,0"/>
+                <StackLayout Grid.Row="0" VerticalOptions="End" Padding="10,10" Orientation="Horizontal">
+                    <ff:CachedImage Source="http://lorempixel.com/1920/1080/nature/3/" HeightRequest="100"
+                                    HorizontalOptions="End" BackgroundColor="Gray" WidthRequest="100">
+                        <ff:CachedImage.Transformations>
+                            <ffTrans:CircleTransformation />
+                        </ff:CachedImage.Transformations>
+                    </ff:CachedImage>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Marie Brown &#10;" FontSize="25" FontAttributes="Bold" ForegroundColor="White" />
+                                <Span Text="ID 1234567" FontSize="17" ForegroundColor="White" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="20" Spacing="40" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="5.0 / 5.0" HorizontalOptions="Center"/>
+                        <Label Text="Shop Rating" HorizontalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout WidthRequest="1" HeightRequest="40" BackgroundColor="Gray" VerticalOptions="Fill"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="148" HorizontalOptions="Center"/>
+                        <Label Text="Followers" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout WidthRequest="1" HeightRequest="40" BackgroundColor="Gray" VerticalOptions="Fill"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="148" HorizontalOptions="Center"/>
+                        <Label Text="Followers" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Grid.Row="2">
+                    <Label Text="Comments and Reviews" HorizontalOptions="Center" FontSize="15" FontAttributes="Bold" Margin="20"/>
+                    
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

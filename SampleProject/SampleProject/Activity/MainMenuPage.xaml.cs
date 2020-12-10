@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SampleProject.Model;
 
 namespace SampleProject.Activity
 {
@@ -15,6 +16,16 @@ namespace SampleProject.Activity
         public MainMenuPage()
         {
             InitializeComponent();
+        }
+        protected override void OnAppearing()
+        {
+            Loadcategories();
+        }
+
+        private async void Loadcategories()
+        {
+            var categories = await tbl_Categories.Read();
+            categorylist.ItemsSource = categories;
         }
     }
 }
