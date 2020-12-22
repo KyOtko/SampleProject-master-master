@@ -17,15 +17,21 @@ namespace SampleProject.Activity
         {
             InitializeComponent();
         }
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
-            Loadcategories();
+            await Loadcategories();
+            await LoadUsers();
         }
 
-        private async void Loadcategories()
+        private async Task Loadcategories()
         {
             var categories = await tbl_Categories.Read();
             categorylist.ItemsSource = categories;
+        }
+        private async Task LoadUsers()
+        {
+            var Users = await tbl_Users.Read();
+            ListUsers.ItemsSource = Users;
         }
     }
 }

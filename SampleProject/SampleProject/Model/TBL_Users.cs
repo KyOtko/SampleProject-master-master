@@ -13,6 +13,7 @@ namespace SampleProject.Model
         public string address { get; set; }
         public string contact_number { get; set; }
         public string email { get; set; }
+        public string company_name { get; set; }
         public string password { get; set; }
         public DateTime datereg { get; set; }
         public string cover_img { get; set; }

@@ -19,37 +19,45 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-
-            <SearchBar Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Placeholder="Look" BackgroundColor="Transparent" HorizontalOptions="Fill"/>
-            <Label Grid.Column="0" Grid.Row="3" Text="Categories" FontSize="15"/>
-
+            <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="Current location" FontSize="20" FontAttributes="Bold"/>
+            <Image Grid.Column="1" Grid.Row="2" HeightRequest="20" Source="Arrow" HorizontalOptions="Start"/>
+            <SearchBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Placeholder="Search store" BackgroundColor="Transparent" HorizontalOptions="Fill"/>
+            <Label Text="Categories" Grid.Row="4"/>
             <CollectionView    Margin="0,5" x:Name="categorylist"
-                               BackgroundColor="Gray"
-                               HeightRequest="100"
-                               VerticalOptions="FillAndExpand"
-                               HorizontalScrollBarVisibility="Default" 
-                               ItemsLayout="HorizontalList" 
-                               Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+                               HeightRequest="250"
+                               VerticalOptions="Fill"
+                               HorizontalScrollBarVisibility="Always" 
+                               Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
+                               BackgroundColor="AliceBlue">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"
+                                     Span="2"/>
+                </CollectionView.ItemsLayout>
+
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="0,0,5,0">
-                            <Frame HeightRequest="50" HasShadow="False" BackgroundColor="#feeee8" CornerRadius="10">
-                            <Image Source="{Binding cat_img}"/>
-                            </Frame>
-                            <Label Text="{Binding cat_name}" HorizontalTextAlignment="Center"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5" Text="Featured Listing" FontSize="15" FontAttributes="Bold"/>
-            <CollectionView Grid.Row="6" ItemsSource="{Binding TBL_Category}" BackgroundColor="Pink"
-                            Margin="0,25,0,0" x:Name="ListCategories" SelectionMode="Single"
+                        <DataTemplate>
+                        <ContentView>
+                            <StackLayout Padding="0,10,5,0" Margin="10,10,10,10">
+                                <Frame HeightRequest="50" HasShadow="False" CornerRadius="10">
+                                    <Image Source="{Binding cat_img}" Aspect="AspectFill" HeightRequest="30"/>
+                                </Frame>
+                                <Label Text="{Binding cat_name}" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+            <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Text="Featured Listing" Margin="0,15" FontSize="30" FontAttributes="Bold"/>
+            <CollectionView Grid.Row="6" 
+                            Margin="0,60,0,0" x:Name="ListUsers" SelectionMode="Single"
                             Grid.ColumnSpan="3"
                             HorizontalScrollBarVisibility="Always" x:FieldModifier="public"
-                            VerticalOptions="Fill" SelectionChanged="ListCategories_OnSelectionChanged" >
+                            VerticalOptions="Fill"
+                            BackgroundColor="AliceBlue">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"
-                                     Span="2" />
+                                     Span="2"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -61,7 +69,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame Grid.Row="0" Margin="0" Padding="0" Grid.Column="0" CornerRadius="10">
+                                <Frame Grid.Row="0" Margin="0" Padding="0" CornerRadius="10">
                                     <StackLayout Padding="0">
                                         <ff:CachedImage x:Name="prodimg" Source="{Binding cover_img}"
                                                         HeightRequest="220" Aspect="AspectFill"
@@ -70,7 +78,7 @@
                                         <Label VerticalOptions="Center" FontAttributes="Bold" Margin="5,0,0,5">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding last_name}" FontSize="18"
+                                                    <Span Text="{Binding company_name}" FontSize="18"
                                                           TextColor="Black"
                                                           FontFamily="TitleFontBold" />
                                                 </FormattedString>
