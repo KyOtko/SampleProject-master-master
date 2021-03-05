@@ -1,34 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="SampleProject.Activity.SearchPage">
     <ContentPage.Content>
-        <Grid Margin="0,0,0,0">
+
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <SearchBar Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" 
-                       Placeholder="Look" BackgroundColor="Transparent" 
-                       HorizontalOptions="Fill"/>
-            <StackLayout Grid.Row="1">
-                <Label Text=" Store Picture" VerticalOptions="CenterAndExpand" Margin="150,0,0,0"/>
-            </StackLayout>
+            <SearchBar Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Placeholder="Search store" BackgroundColor="Transparent" HorizontalOptions="Fill"/>
 
-            <StackLayout Grid.Row="2">
-                <Label Text=" Store Picture" VerticalOptions="CenterAndExpand" Margin="150,0,0,0"/>
-            </StackLayout>
 
-            <StackLayout Grid.Row="3">
-                <Label Text=" Store Picture" VerticalOptions="CenterAndExpand" Margin="150,0,0,0"/>
-            </StackLayout>
-
+            <CollectionView Grid.Row="1" 
+                             x:Name="ListUsers" SelectionMode="Single" Grid.ColumnSpan="3"
+                            HorizontalScrollBarVisibility="Always" x:FieldModifier="public"
+                            VerticalOptions="Fill"
+                            BackgroundColor="Red">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="2"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="5" BackgroundColor="Yellow">
+                            <Grid Margin="0" Padding="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="250"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.Row="0" Margin="0" Padding="0" CornerRadius="10">
+                                    <StackLayout Padding="0">
+                                        <forms:CachedImage x:Name="prodimg" Source="{Binding cover_img}"
+                                                        HeightRequest="220" Aspect="AspectFill"
+                                                        LoadingPlaceholder="notfound.png"
+                                                        ErrorPlaceholder="notfound.png" />
+                                        <Label VerticalOptions="Center" FontAttributes="Bold" Margin="5,0,0,5">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding company_name}" FontSize="18"
+                                                          TextColor="Black"
+                                                          FontFamily="TitleFontBold" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Grid>
+        
+
     </ContentPage.Content>
 </ContentPage>

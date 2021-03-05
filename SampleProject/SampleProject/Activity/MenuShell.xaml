@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:SampleProject.Activity;assembly=SampleProject"
+             xmlns:activity="clr-namespace:SampleProject.Activity;assembly=SampleProject"
+             x:Class="SampleProject.Activity.MenuShell">
+        <ShellItem>
+            <ShellContent>
+                <pages:MainMenuPage/> 
+
+            </ShellContent>
+        </ShellItem>
+</Shell>

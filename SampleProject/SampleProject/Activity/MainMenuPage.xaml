@@ -1,8 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="LOOKAPP"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="SampleProject.Activity.MainMenuPage">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Image Source="profile" HeightRequest="10"/>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Look" FontSize="30" FontFamily="TitleDesign" FontAttributes="Bold"
+                               />
+                        <Span Text="App" FontSize="30" FontFamily="TitleFontLight"
+                               />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid Margin="0,0,0,0">
             <Grid.RowDefinitions>
@@ -11,7 +27,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="120"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -20,26 +36,26 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="Current location" FontSize="20" FontAttributes="Bold"/>
-            <Image Grid.Column="1" Grid.Row="2" HeightRequest="20" Source="Arrow" HorizontalOptions="Start"/>
-            <SearchBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Placeholder="Search store" BackgroundColor="Transparent" HorizontalOptions="Fill"/>
+            <Image Grid.Column="1" Grid.Row="2" HeightRequest="20" Source="arrow" Margin="-280,5,0,0"/>
+            <SearchBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" 
+                       Placeholder="Search services" BackgroundColor="Transparent" HorizontalOptions="Fill" x:Name="prosearch"
+                       TextChanged="Prosearch_OnTextChanged"/>
             <Label Text="Categories" Grid.Row="4"/>
             <CollectionView    Margin="0,5" x:Name="categorylist"
-                               HeightRequest="250"
                                VerticalOptions="Fill"
-                               HorizontalScrollBarVisibility="Always" 
-                               Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
-                               BackgroundColor="AliceBlue">
-                <CollectionView.ItemsLayout>
+                               HorizontalScrollBarVisibility="Never" 
+                               Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+                <CollectionView.ItemsLayout >
                     <GridItemsLayout Orientation="Horizontal"
-                                     Span="2"/>
+                                     Span="1" />
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
                         <DataTemplate>
                         <ContentView>
-                            <StackLayout Padding="0,10,5,0" Margin="10,10,10,10">
-                                <Frame HeightRequest="50" HasShadow="False" CornerRadius="10">
-                                    <Image Source="{Binding cat_img}" Aspect="AspectFill" HeightRequest="30"/>
+                            <StackLayout Margin="8">
+                                <Frame HeightRequest="20" HasShadow="False" CornerRadius="10">
+                                    <Image Source="{Binding cat_img}"  HeightRequest="30"/>
                                 </Frame>
                                 <Label Text="{Binding cat_name}" HorizontalTextAlignment="Center"/>
                             </StackLayout>
@@ -48,12 +64,12 @@
                     </CollectionView.ItemTemplate>
                             </CollectionView>
 
-            <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Text="Featured Listing" Margin="0,15" FontSize="30" FontAttributes="Bold"/>
+            <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Text="Services Near you" Margin="0,15" FontSize="30" FontAttributes="Bold"/>
             <CollectionView Grid.Row="6" 
-                            Margin="0,60,0,0" x:Name="ListUsers" SelectionMode="Single"
+                            Margin="0,60,0,0" x:Name="ListUsers"  SelectionMode="Single"
                             Grid.ColumnSpan="3"
                             HorizontalScrollBarVisibility="Always" x:FieldModifier="public"
-                            VerticalOptions="Fill"
+                            VerticalOptions="Fill"      SelectionChanged="ListUsers_OnSelectionChanged"
                             BackgroundColor="AliceBlue">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"

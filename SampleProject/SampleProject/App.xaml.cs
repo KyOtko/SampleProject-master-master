@@ -8,11 +8,13 @@ namespace SampleProject
 {
     public partial class App : Application
     {
-        public static readonly MobileServiceClient MobileService = new MobileServiceClient("https://lookupdbwebapp.azurewebsites.net");
+        public static readonly MobileServiceClient MobileService = new MobileServiceClient("https://lookappinstance.azurewebsites.net");
+        public static string company_id;
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new Activity.MainMenuPage());
+            MainPage = new NavigationPage(new Activity.LoginPage());
+          // MainPage= new LoginPage();
         }
  
         protected override void OnStart()   

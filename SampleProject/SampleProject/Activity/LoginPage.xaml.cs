@@ -25,8 +25,7 @@ namespace SampleProject.Activity
             {
                 if (users.password == passwordEntry.Text)
                 {
-                    await DisplayAlert("Found", "Email and password match!", "OK");
-                    await Navigation.PushAsync(new MainMenuPage());
+                    Device.BeginInvokeOnMainThread(() => { Application.Current.MainPage = new MenuShell(); });
                 }
                 else
                 {

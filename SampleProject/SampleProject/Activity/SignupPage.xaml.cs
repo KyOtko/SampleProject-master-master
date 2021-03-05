@@ -35,6 +35,12 @@ namespace SampleProject.Activity
                     entry_lname.Focus();
                     return;
                 }
+                if (entry_bname.Text == null)
+                {
+                    await DisplayAlert("Field required", "Please enter you Store name!", "OK");
+                    entry_bname.Focus();
+                    return;
+                }
 
                 if (Address.Text == null)
                 {
@@ -77,6 +83,7 @@ namespace SampleProject.Activity
                     {
                         first_name = entry_fname.Text,
                         last_name = entry_lname.Text,
+                        company_name = entry_bname.Text,
                         address = Address.Text,
                         contact_number = contact_Num.Text,
                         email = entry_email.Text,
@@ -84,14 +91,22 @@ namespace SampleProject.Activity
                         datereg = DateTime.Now
                     };
                     await tbl_Users.Insert(user);
-                    await DisplayAlert("Success", "You've successfuly registered!", "OK");
+                    await DisplayAlert("Success", "You've successfully signed up! Please login to your account now!", "OK");
+                    await Navigation.PopAsync(true);
                     return;
                 }
+                else
+                {
+                    await DisplayAlert("Confirm password", "Confirm your password!", "OK");
+                    //confirmpassentry.Focus();
+                }
+
+
 
             }          
             catch
             {
-               // await tbl_Users.Insert(user);
+               //await tbl_Users.Insert(user);
                 await DisplayAlert("Error", "User Information Alreary exist!", "OK" );
                 return;
             }
