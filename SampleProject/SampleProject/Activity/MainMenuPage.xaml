@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<!--<?xml version="1.0" encoding="utf-8" ?>-->
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="LOOKAPP"
@@ -6,7 +6,7 @@
              x:Class="SampleProject.Activity.MainMenuPage">
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal">
-            <Image Source="profile" HeightRequest="10"/>
+            <!--<Image Source="profile" HeightRequest="10"/>-->
             <Label>
                 <Label.FormattedText>
                     <FormattedString>
@@ -41,7 +41,8 @@
                        Placeholder="Search services" BackgroundColor="Transparent" HorizontalOptions="Fill" x:Name="prosearch"
                        TextChanged="Prosearch_OnTextChanged"/>
             <Label Text="Categories" Grid.Row="4"/>
-            <CollectionView    Margin="0,5" x:Name="categorylist"
+
+                <CollectionView    Margin="0,5" x:Name="categorylist" SelectionMode="Single" SelectionChanged="Categorylist_OnSelectionChanged"
                                VerticalOptions="Fill"
                                HorizontalScrollBarVisibility="Never" 
                                Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
@@ -53,7 +54,7 @@
                 <CollectionView.ItemTemplate>
                         <DataTemplate>
                         <ContentView>
-                            <StackLayout Margin="8">
+                            <StackLayout Margin="8" >
                                 <Frame HeightRequest="20" HasShadow="False" CornerRadius="10">
                                     <Image Source="{Binding cat_img}"  HeightRequest="30"/>
                                 </Frame>
@@ -65,8 +66,9 @@
                             </CollectionView>
 
             <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Text="Services Near you" Margin="0,15" FontSize="30" FontAttributes="Bold"/>
-            <CollectionView Grid.Row="6" 
-                            Margin="0,60,0,0" x:Name="ListUsers"  SelectionMode="Single"
+            <RefreshView Grid.Row="6" Grid.ColumnSpan="3"  x:Name="RefreshView" RefreshColor="White" Refreshing="RefreshView_OnRefreshing">
+                <CollectionView Grid.Row="6" 
+                            Margin="0,60,0,0" x:Name="ListCompanies"  SelectionMode="Single"
                             Grid.ColumnSpan="3"
                             HorizontalScrollBarVisibility="Always" x:FieldModifier="public"
                             VerticalOptions="Fill"      SelectionChanged="ListUsers_OnSelectionChanged"
@@ -107,6 +109,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            </RefreshView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

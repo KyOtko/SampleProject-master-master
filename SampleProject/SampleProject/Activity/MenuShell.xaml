@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<!--<?xml version="1.0" encoding="utf-8" ?>-->
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:SampleProject.Activity;assembly=SampleProject"
@@ -7,7 +7,13 @@
         <ShellItem>
             <ShellContent>
                 <pages:MainMenuPage/> 
-
             </ShellContent>
         </ShellItem>
+    <!--<MenuItem Text="Logout" Command="{Binding ExecuteLogout}" />-->
+    <FlyoutItem Title=" Home" Shell.TabBarIsVisible="False"
+                FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Home" Icon="homepage.png" ContentTemplate="{DataTemplate pages:MainMenuPage}"/>
+        <!--<ShellContent Title="Logout" Icon="logout.png" ContentTemplate="{DataTemplate pages:LoginPage}"/>-->
+    </FlyoutItem>
+        <MenuItem Text="Logout" IconImageSource="logout.png" StyleClass="MenuItemLayoutStyle" x:Name="itemuser" Clicked="ItemUser_OnClicked"/>
 </Shell>

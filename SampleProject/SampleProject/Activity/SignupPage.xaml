@@ -1,24 +1,70 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<!--<?xml version="1.0" encoding="utf-8" ?>-->
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundImageSource="https://i.ibb.co/Mp9y19p/e35263fe21ec0d51eb0f7ebaabaf961d.jpg"
              x:Class="SampleProject.Activity.SignupPage">
-    <StackLayout BackgroundColor="Aquamarine">
-        <Frame Margin="20,130" HeightRequest="500" CornerRadius="10"
-               HasShadow="True">
-            <StackLayout >
-                <Label Text="Sign-up" FontSize="25" FontAttributes="Bold"
-                       HorizontalOptions="Center"/>
-                <Entry x:Name="entry_fname" Placeholder="First Name:"/>
-                <Entry x:Name="entry_lname"  Placeholder="Last Name:"/>
-                <Entry x:Name="entry_bname"  Placeholder="Store Name:"/>
-                <Editor x:Name="Address" Placeholder="Address of the Store:"/>
-                <Entry x:Name="contact_Num" Placeholder="Mobile # of the Store:"/>
-                <Entry x:Name="entry_email" Placeholder="Email Address:" Keyboard="Email"/>
-                <Entry x:Name="entry_pword" Placeholder="Password:" IsPassword="True"/>
-                <Entry x:Name="entry_cpword" Placeholder="Confirm Password:" IsPassword="True"/>
-                <Button Text="Submit" CornerRadius="20" BackgroundColor="DodgerBlue"
-                        TextColor="White" Clicked="Button_Clicked"/>
-            </StackLayout>
-        </Frame>
-    </StackLayout>
+
+    
+        <StackLayout>
+            <Frame Margin="20,120" HeightRequest="700" CornerRadius="10"
+                   HasShadow="True" Opacity="0.9">
+                <StackLayout>
+                    <Label Text="Sign-up" FontSize="25" FontAttributes="Bold"
+                           HorizontalOptions="Center"/>
+                    <Entry x:Name="entry_fullname" Placeholder="Full name"/>
+                    <!--<Entry x:Name="entry_lname"  Placeholder="Last name"/>-->
+                    <Entry x:Name="entry_email" Placeholder="Email Address" Keyboard="Email" TextChanged="Entry_email_OnTextChanged"/>
+                    <Label IsVisible="False" x:Name="lblerror" Text="Invalid email address!" TextColor="Red"
+                           FontSize="12"/>
+                    <Entry x:Name="entry_pword" Placeholder="Password" IsPassword="True"/>
+                    <Entry x:Name="entry_cpword" Placeholder="Confirm Password" IsPassword="True"/>
+                    <ActivityIndicator x:Name="loadingindicator" Color="Black" IsVisible="False"
+                                       IsRunning="True" />
+                    <Button Text="Submit" CornerRadius="20" BackgroundColor="DodgerBlue"
+                            TextColor="White" Clicked="Button_Clicked"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="1">
+            <Frame VerticalOptions="CenterAndExpand" BackgroundColor="AliceBlue"
+                   HeightRequest="550" Margin="0,0,0,0">
+                <StackLayout>
+                    <Image Source="looklook" Aspect="AspectFit" HeightRequest="300"/>
+                    <Label Text="Sign-up" FontSize="25" FontAttributes="Bold"
+                           HorizontalOptions="Center"/>
+                    <Entry x:Name="entry_fullname" Placeholder="Full Name:"/>
+                    --><!--<Editor x:Name="Address" Placeholder="Address of the Store:"/>--><!--
+                    <Entry x:Name="entry_email" Placeholder="Email Address:" Keyboard="Email"/>
+                    <Entry x:Name="entry_pword" Placeholder="Password:" IsPassword="True"/>
+                    <Entry x:Name="entry_cpword" Placeholder="Confirm Password:" IsPassword="True"/>
+                   
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Grid.Row="2">
+            <Frame VerticalOptions="CenterAndExpand" 
+                   CornerRadius="20" HasShadow="True"
+                   BackgroundColor="White" 
+                   HeightRequest="80" Margin="0,-100,0,0">
+                <StackLayout>
+                    <Button Text="Submit" CornerRadius="20" BackgroundColor="DodgerBlue"
+                            TextColor="White" Clicked="Button_Clicked" Margin="0,20,0,0"/>
+                </StackLayout>
+              
+            </Frame>
+           
+        </StackLayout>
+
+    </Grid>-->
+   
 </ContentPage>

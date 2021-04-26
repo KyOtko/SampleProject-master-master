@@ -1,24 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SampleProject.Activity.LoginPage">
-    <StackLayout BackgroundColor="Aquamarine">
+             x:Class="SampleProject.Activity.LoginPage"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             BackgroundImageSource="https://i.ibb.co/Mp9y19p/e35263fe21ec0d51eb0f7ebaabaf961d.jpg"
+             Padding="0"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="1">
+            <Frame VerticalOptions="CenterAndExpand" BackgroundColor="AliceBlue"
+                   HeightRequest="500" Margin="0,-60,0,0">
+                <StackLayout Margin="0,50,0,0">
+                   <Image Source="looklook" Aspect="AspectFit" HeightRequest="330"/>
+                   <StackLayout Margin="0,0,0,0">
+                        <Label Text=" Dont have account yet?" HorizontalOptions="Center"/>
+                        <Button Text="Sign-up" HorizontalOptions="Center"
+                               BackgroundColor="LightGray" FontSize="12"
+                               x:Name="btnsignup" Clicked="Btnsignup_OnClicked" CornerRadius="20"/>
+                    </StackLayout>
+                    
+               </StackLayout>
+
+
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Grid.Row="2">
+            <Frame VerticalOptions="CenterAndExpand" 
+                   CornerRadius="20" HasShadow="True"
+                   BackgroundColor="White" 
+                   HeightRequest="300" Margin="0,-60,0,0">
+                <StackLayout  Margin="0,50,0,0">
+                    <Entry x:Name="emailEntry" VerticalOptions="Start"
+                           Placeholder="Email Address" Keyboard="Email"/>
+                    <Entry x:Name="passwordEntry" VerticalOptions="Start"
+                           Placeholder="Password" IsPassword="True"/>
+                    <Button Text="Login" Clicked="Button_OnClicked" Margin="0,40,0,0" CornerRadius="20"/>
+                   
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </Grid>-->
+    <StackLayout Margin="10,0,13,0" BackgroundColor="Transparent">
         <Frame VerticalOptions="CenterAndExpand" 
-               CornerRadius="10" HasShadow="True"
-               BackgroundColor="White" Margin="20,0,20,0"
-               HeightRequest="300">
-            <StackLayout>
+               CornerRadius="20" HasShadow="True"
+               HeightRequest="560" Margin="0,-60,0,0" BackgroundColor="#FFFFFF" Opacity="0.9" >
+            <StackLayout  Margin="0,50,0,0">
+                <Image Source="https://i.ibb.co/cNbnBL9/c3e243e0df5b4dff85a91cc77fcbc74d-1.png" Aspect="AspectFit" HeightRequest="100" Margin="0,-50,0,80"/>
+                <Label Text="Welcome!" Margin="0,-50,0,80" FontSize="40" TextColor="Black" FontAttributes="Bold"/>
+                <Label Text="Business Owner Application"  Margin="0,-86,0,50" />
                 <Entry x:Name="emailEntry" VerticalOptions="Start"
-                       Placeholder="Email Address" Keyboard="Email"/>
+                       Placeholder="Email Address" Keyboard="Email" TextChanged="EmailEntry_OnTextChanged"/>
+                <Label IsVisible="False" x:Name="lblerror" Text="Invalid email address!" TextColor="Red"
+                       FontSize="12"/>
                 <Entry x:Name="passwordEntry" VerticalOptions="Start"
                        Placeholder="Password" IsPassword="True"/>
-                <Button Text="Login" Clicked="Button_OnClicked"/>
-                <Label Text="Don't have an account yet?"
-                       Margin="0,90,0,0"/> 
-                <Button Margin="165,-35,30,0" Text="Sign-up"
-                        BackgroundColor="White" FontSize="12"
-                        x:Name="btnsignup" Clicked="Btnsignup_OnClicked"/>
+
+                <ActivityIndicator x:Name="loadingindicator" Color="Black" IsVisible="False"
+                                   IsRunning="True" />
+                <Button Text="Login" Clicked="Button_OnClicked" Margin="0,35,0,0" CornerRadius="20" BackgroundColor="#A7DBF3"/>
+                <Button Text="Create an Account" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold"
+                        BackgroundColor="Transparent" FontSize="12"
+                        x:Name="btnsignup" Clicked="Btnsignup_OnClicked" CornerRadius="20"/>
             </StackLayout>
+
         </Frame>
+
+
     </StackLayout>
+
 </ContentPage>

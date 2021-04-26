@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="SampleProject.Activity.birPage">
+    <ContentPage.Content>
+
+        <Grid x:Name="GridB">
+            <CollectionView x:Name="BIRIMG" HeightRequest="500">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="5" HeightRequest="800" WidthRequest="400">
+                            <Grid Margin="0" Padding="0">
+                                <Frame Grid.Row="0" Margin="0" Padding="0" CornerRadius="10">
+                                    <StackLayout Padding="0">
+                                        <forms:CachedImage Source="{Binding birImg}"
+                                                         HeightRequest="900" Aspect="AspectFill"
+                                                        LoadingPlaceholder="notfound.png"
+                                                        ErrorPlaceholder="notfound.png" />
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

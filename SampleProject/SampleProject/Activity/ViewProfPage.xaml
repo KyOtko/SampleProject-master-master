@@ -1,90 +1,144 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<!--<?xml version="1.0" encoding="utf-8" ?>-->
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SampleProject.Activity.ViewProfPage"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
-    <ScrollView>
-        <StackLayout BackgroundColor="#fbfaff">
+             xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:activity="clr-namespace:SampleProject.Activity;assembly=SampleProject">
 
-            <Grid RowSpacing="30" x:Name="profilegrid">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="250"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="*"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" BackgroundColor="#fbfaff">
+                <Grid RowSpacing="30" x:Name="profilegrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" x:Name="image_frame" HeightRequest="200" WidthRequest="200" Margin="0,15,0,0">
-                    <Image Source="{Binding cat_img}" HeightRequest="200" WidthRequest="200"/>
-                </StackLayout>
-                <Image Grid.Row="0"
-                       Source="{Binding cover_img}" HeightRequest="300" BackgroundColor="Gray"
+                    <StackLayout Grid.Row="0" x:Name="image_frame" HeightRequest="200" WidthRequest="200" Margin="0,15,0,0">
+                        <Image Source="{Binding cat_img}" HeightRequest="200" WidthRequest="200"/>
+                    </StackLayout>
+                    <Image Grid.Row="0"
+                       Source="{Binding cover_img}" HeightRequest="300" BackgroundColor="Transparent"
                        VerticalOptions="Start" Aspect="AspectFill" Margin="0,-45,0,0"/>
-                
-                <StackLayout Grid.Row="0" VerticalOptions="End" Padding="10,10" Orientation="Horizontal">
-                    <ff:CachedImage Source="http://lorempixel.com/1920/1080/nature/3/" HeightRequest="100"
-                                    HorizontalOptions="End"  WidthRequest="100">
-                        <ff:CachedImage.Transformations>
-                            <ffTrans:CircleTransformation/>
-                        </ff:CachedImage.Transformations>
-                    </ff:CachedImage>
-                    <StackLayout Orientation="Vertical">
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding company_name}" FontSize="25" FontAttributes="Bold"
+
+                    <StackLayout Grid.Row="0" VerticalOptions="End" Padding="10,10" Orientation="Horizontal">
+                        <StackLayout Orientation="Vertical">
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding company_name}" FontSize="25" FontAttributes="Bold"
                                           ForegroundColor="White" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding address}" FontSize="12" FontAttributes="Bold"
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding address}" FontSize="12" FontAttributes="Bold"
                                           ForegroundColor="White" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="Get Directions" FontSize="25" FontAttributes="Bold"
-                                          ForegroundColor="White" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Grid.Row="0" HorizontalOptions="End" >
+                            <Button Text="Get Direction" FontAttributes="Bold" TextColor="Black" 
+                                    x:Name="getdirection" Clicked="Getdirection_OnClicked"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="0" >
+                            <Button Text="Ask for Services" FontAttributes="Bold" TextColor="Black" />
+                             <Button Text="BIR Image" FontAttributes="Bold" TextColor="Black" x:Name="birshow" Clicked="Birshow_OnClicked" />
                     </StackLayout>
+                        
 
 
                 </StackLayout>
 
-                <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="20" Spacing="40" HorizontalOptions="Center">
-                    <StackLayout Orientation="Vertical">
-                        <Label Text="5.0 / 5.0" HorizontalOptions="Center"/>
-                        <Label Text="Shop Rating" HorizontalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical">
-                        <StackLayout WidthRequest="1" HeightRequest="40" BackgroundColor="Gray" VerticalOptions="Fill"/>
+                    <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,-40,0,0" Spacing="40" HorizontalOptions="Center" >
+                        <StackLayout Orientation="Vertical">
+                        <Label Text="{Binding rating}"  x:Name="ratingOP" HorizontalOptions="Center"/>
+                            <Label Text="Shop Rating" HorizontalOptions="Center"/>
+
+                        </StackLayout>
                     </StackLayout>
 
-                    <StackLayout Orientation="Vertical">
-                        <Label Text="148" HorizontalOptions="Center"/>
-                        <Label Text="Followers" HorizontalOptions="Center"/>
+                    <StackLayout Grid.Row="2" Margin="0,-70,0,0">
+                        <activity:RattingBar  x:Name="customRattingBar" HorizontalOptions="Center" 
+                                              ImageWidth="25" ImageHeight="25" SelectedStarValue="5"   
+                                              FillStarImage="fillstar" EmptyStarImage="emptystar" />
                     </StackLayout>
 
-                    <StackLayout Orientation="Vertical">
-                        <StackLayout WidthRequest="1" HeightRequest="40" BackgroundColor="Gray" VerticalOptions="Fill"/>
-                    </StackLayout>
-
-                    <StackLayout Orientation="Vertical">
-                        <Label Text="148" HorizontalOptions="Center"/>
-                        <Label Text="Followers" HorizontalOptions="Center"/>
-                    </StackLayout>
+                <StackLayout Grid.Row="3" x:Name="entrycom" Margin="0,-70,0,0">
+                    <Label Text="Comments and Reviews" HorizontalOptions="Center" FontSize="15" FontAttributes="Bold"/>
                 </StackLayout>
-                <StackLayout Grid.Row="2">
-                    <Label Text="Comments and Reviews" HorizontalOptions="Center" FontSize="15" FontAttributes="Bold" Margin="20"/>
-                    
-                </StackLayout>
-            </Grid>
+                   
+                </Grid>
         </StackLayout>
-    </ScrollView>
+
+
+        <StackLayout Grid.Row="1" Margin="0,-70,0,0">
+            <RefreshView x:Name="RefreshView" RefreshColor="White" Refreshing="RefreshView_OnRefreshing">
+                <CollectionView x:Name="ListComment"
+                                VerticalOptions="CenterAndExpand">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                         Span="1" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView Padding="5">
+                                <Grid Margin="0" Padding="0" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="120" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Frame Grid.Row="0" Margin="0" Padding="0" Grid.Column="0" CornerRadius="10"
+                                           HasShadow="True">
+                                        <StackLayout Margin="5" Spacing="0" BackgroundColor="White">
+                                            <StackLayout Padding="0" Spacing="0">
+                                                <StackLayout Orientation="Horizontal" >
+                                                    <Label VerticalOptions="Center" FontAttributes="Bold"
+                                                           Margin="5,0,0,5"
+                                                           LineBreakMode="TailTruncation" HorizontalOptions="Start">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding full_name}" FontSize="13" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                </StackLayout>
+                                                <Label VerticalOptions="Center" FontAttributes="Bold"
+                                                       Margin="5,0,0,5"
+                                                       LineBreakMode="TailTruncation">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding comment}" FontSize="12" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+          
+
+            <Button Grid.Row="2" Text="Add Comment and Ratings" VerticalOptions="EndAndExpand" FontAttributes="Bold" TextColor="Black" 
+                x:Name="addcomment" Clicked="Addcomment_OnClicked"/>
+
+    </Grid>
 </ContentPage>

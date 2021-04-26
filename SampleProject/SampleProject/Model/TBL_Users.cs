@@ -15,9 +15,23 @@ namespace SampleProject.Model
         public string email { get; set; }
         public string company_name { get; set; }
         public string password { get; set; }
-        public DateTime datereg { get; set; }
+        public string datereg { get; set; }
         public string cover_img { get; set; }
         public string listing { get; set; }
+        public double longitude { get; set; }
+        public double latitude { get; set; }
+        public double one_star { get; set; }
+        public double two_star { get; set; }
+        public double three_star { get; set; }
+        public double four_star { get; set; }
+        public double five_star { get; set; }
+        public string city { get; set; }
+        public string birImg { get; set; }
+        public string propic { get; set; }
+        public string picstr { get; set; }
+        public string cat_name { get; set; }
+
+
 
         public static async Task<List<tbl_Users>> Read()
         {
@@ -28,6 +42,11 @@ namespace SampleProject.Model
         public static async Task Insert(tbl_Users userdetails)
         {
             await App.MobileService.GetTable<tbl_Users>().InsertAsync(userdetails);
+        }
+
+        public static async Task Update(tbl_Users comment)
+        {
+            await App.MobileService.GetTable<tbl_Users>().UpdateAsync(comment);
         }
     }
 }
